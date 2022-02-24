@@ -1,5 +1,6 @@
 package com.keepitreal.keepitreal.service;
 
+import com.keepitreal.keepitreal.exceptions.InformationExistsException;
 import com.keepitreal.keepitreal.exceptions.InformationNotFoundException;
 import com.keepitreal.keepitreal.model.Posts;
 import com.keepitreal.keepitreal.model.Therapist;
@@ -23,6 +24,26 @@ public class PostsService {
             throw new InformationNotFoundException("no posts available.");
         } else {
             return posts;
+        }
+    }
+
+    //CREATING A POST
+    public Posts createPosts(Posts postsObject){
+        Posts posts = postsRepository.findByName(postsObject.getName());
+        if(posts!=null){
+            throw new InformationExistsException("post from "+postsObject.getName()+" already exists.");
+        } else{
+            return postsRepository.save(postsObject);
+        }
+    }
+
+    //GETTING A CERTAIN POST
+    public Posts getOnePost(Long postsId){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post==null){
+            throw new InformationNotFoundException("post with ID "+postsId+" does not exist.");
+        } else{
+            return post;
         }
     }
 
