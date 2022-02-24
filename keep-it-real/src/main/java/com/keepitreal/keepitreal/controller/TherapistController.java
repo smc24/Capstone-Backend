@@ -32,6 +32,11 @@ public class TherapistController {
         return therapistService.getOneTherapist(therapistId);
     }
 
+    @PutMapping("/therapists/{therapistId}/")
+    public Therapist updateTherapist(@PathVariable Long therapistId, @RequestBody Therapist therapistObject){
+        return therapistService.updateTherapist(therapistId, therapistObject);
+    }
+
 
 
 

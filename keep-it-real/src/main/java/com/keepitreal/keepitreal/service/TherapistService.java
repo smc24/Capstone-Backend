@@ -47,6 +47,20 @@ public class TherapistService {
         }
     }
 
+    //UPDATING A THERAPIST'S INFO
+    public Therapist updateTherapist(Long therapistId, Therapist therapistObject){
+        Optional<Therapist> therapist = therapistRepository.findById(therapistId);
+        if(therapist.isPresent()){
+            Therapist updateTherapist = therapistRepository.findById(therapistId).get();
+            updateTherapist.setName(therapistObject.getName());
+            updateTherapist.setYearsOfExperience(therapistObject.getYearsOfExperience());
+            updateTherapist.setMedicalBackground(therapistObject.getMedicalBackground());
+            return therapistRepository.save(updateTherapist);
+        } else {
+            throw new InformationNotFoundException("therapist with ID "+therapistId+" does not exist.");
+        }
+    }
+
 
 
 
