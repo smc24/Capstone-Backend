@@ -1,5 +1,6 @@
 package com.keepitreal.keepitreal.service;
 
+import com.keepitreal.keepitreal.exceptions.InformationExistsException;
 import com.keepitreal.keepitreal.exceptions.InformationNotFoundException;
 import com.keepitreal.keepitreal.model.Therapist;
 import com.keepitreal.keepitreal.repository.TherapistRepository;
@@ -22,6 +23,17 @@ public class TherapistService {
         } else {
             return therapists;
         }
+    }
+
+    //CREATING A THERAPIST
+    public Therapist createTherapist(Therapist therapistObject){
+        Therapist therapist = therapistRepository.findByName(therapistObject.getName());
+        if(therapist!=null){
+            throw new InformationExistsException(therapistObject.getName()+" already exists in the system.");
+        } else {
+            return therapistRepository.save(therapistObject);
+        }
+
     }
 
 
