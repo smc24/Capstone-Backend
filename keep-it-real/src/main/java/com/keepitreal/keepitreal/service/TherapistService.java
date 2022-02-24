@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TherapistService {
@@ -34,6 +35,16 @@ public class TherapistService {
             return therapistRepository.save(therapistObject);
         }
 
+    }
+
+    //GETTING A SPECIFIC THERAPIST
+    public Optional<Therapist> getOneTherapist(Long therapistId){
+        Optional<Therapist> therapist = therapistRepository.findById(therapistId);
+        if(therapist.isPresent()){
+            return therapist;
+        } else {
+            throw new InformationNotFoundException("therapist with ID "+therapistId+" does not exist.");
+        }
     }
 
 

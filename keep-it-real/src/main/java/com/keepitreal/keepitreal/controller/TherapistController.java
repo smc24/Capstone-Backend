@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/api")
@@ -24,6 +25,11 @@ public class TherapistController {
     @PostMapping("/therapists/")
     public Therapist createTherapist(@RequestBody Therapist therapistObject){
         return therapistService.createTherapist(therapistObject);
+    }
+
+    @GetMapping("/therapists/{therapistId}/")
+    public Optional<Therapist> getOneTherapist(@PathVariable Long therapistId){
+        return therapistService.getOneTherapist(therapistId);
     }
 
 
