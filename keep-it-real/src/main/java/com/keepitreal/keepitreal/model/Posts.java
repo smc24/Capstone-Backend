@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "posts")
-public class User {
+public class Posts {
 
     @Id
     @Column
@@ -17,13 +17,13 @@ public class User {
     @Column
     private String mentalConcern;
 
-    public User(Long id, String name, String mentalConcern) {
+    public Posts(Long id, String name, String mentalConcern) {
         this.id = id;
         this.name = name;
         this.mentalConcern = mentalConcern;
     }
 
-    public User() {
+    public Posts() {
     }
 
     public Long getId() {

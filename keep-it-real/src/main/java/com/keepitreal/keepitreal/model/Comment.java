@@ -32,7 +32,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "posts_id", referencedColumnName = "id")
     @JsonIgnore
-    private User user;
+    private Posts user;
 
     public Long getId() {
         return id;
