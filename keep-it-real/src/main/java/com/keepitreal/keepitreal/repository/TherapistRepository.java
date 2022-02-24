@@ -4,4 +4,6 @@ import com.keepitreal.keepitreal.model.Therapist;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TherapistRepository extends JpaRepository<Therapist, Long> {
+    Therapist findByName(String therapistName);
+
 }
