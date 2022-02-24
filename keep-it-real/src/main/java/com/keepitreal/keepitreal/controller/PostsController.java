@@ -27,6 +27,11 @@ public class PostsController {
         return postsService.getOnePost(postsId);
     }
 
+    @PutMapping("/posts/{postsId}/")
+    public Posts updatePost(@PathVariable Long postsId, @RequestBody Posts postObject){
+        return postsService.updatePost(postsId, postObject);
+    }
+
 
 
 }

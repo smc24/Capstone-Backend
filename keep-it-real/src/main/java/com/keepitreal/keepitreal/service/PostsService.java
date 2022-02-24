@@ -47,6 +47,19 @@ public class PostsService {
         }
     }
 
+    //UPDATING A POST
+    public Posts updatePost(Long postsId, Posts postObject){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post!=null){
+            Posts updatePost = postsRepository.findById(postsId).get();
+            updatePost.setName(postObject.getName());
+            updatePost.setMentalConcern(postObject.getMentalConcern());
+            return postsRepository.save(updatePost);
+        } else{
+            throw new InformationNotFoundException("post with ID "+postsId+" does not exist.");
+        }
+    }
+
 
 
 }
