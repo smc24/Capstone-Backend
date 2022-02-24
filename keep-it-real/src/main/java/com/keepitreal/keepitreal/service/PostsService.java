@@ -60,6 +60,17 @@ public class PostsService {
         }
     }
 
+    //DELETE A POST
+    public String deletePost(Long postsId){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post==null){
+            throw new InformationNotFoundException("post with ID "+postsId+" does not exist.");
+        } else{
+            postsRepository.deleteById(postsId);
+            return "post "+postsId+" has been deleted.";
+        }
+    }
+
 
 
 }
