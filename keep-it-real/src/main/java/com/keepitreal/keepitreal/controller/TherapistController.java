@@ -22,7 +22,7 @@ public class TherapistController {
     public String getHelloWorld(){return "hello world";}
 
     @GetMapping("/therapists/")
-    public List<Therapist> getAllTherapists(){return therapistService.getAllTherapists;}
+    public List<Therapist> getAllTherapists(){return therapistService.getAllTherapists();}
 
 
 
