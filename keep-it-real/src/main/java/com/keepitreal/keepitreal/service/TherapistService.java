@@ -61,6 +61,17 @@ public class TherapistService {
         }
     }
 
+    //DELETING A THERAPIST
+    public String deleteTherapist(Long therapistId){
+        Therapist therapist = therapistRepository.findById(therapistId).get();
+        if(therapist!=null){
+            therapistRepository.deleteById(therapistId);
+            return "therapist with ID "+therapistId+" has been deleted.";
+        } else{
+            throw new InformationNotFoundException("therapist with ID "+therapistId+" has been deleted.");
+        }
+    }
+
 
 
 

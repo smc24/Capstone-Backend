@@ -37,6 +37,10 @@ public class TherapistController {
         return therapistService.updateTherapist(therapistId, therapistObject);
     }
 
+    @DeleteMapping("/therapists/{therapistId}/")
+    public String deleteTherapist(@PathVariable Long therapistId){
+        return therapistService.deleteTherapist(therapistId);
+    }
 
 
 
