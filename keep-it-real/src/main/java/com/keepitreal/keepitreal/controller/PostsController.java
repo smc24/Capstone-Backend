@@ -45,5 +45,9 @@ public class PostsController {
         return postsService.getAllComments(postsId);
     }
 
+    @PostMapping("/posts/{postsId}/comment/")
+    public Comment createComment(@PathVariable Long postsId, @RequestBody Comment commentObject){
+        return postsService.createComment(postsId, commentObject);
+    }
 
 }

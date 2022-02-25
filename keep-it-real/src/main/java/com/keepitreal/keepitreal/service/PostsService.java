@@ -8,6 +8,7 @@ import com.keepitreal.keepitreal.repository.CommentRepository;
 import com.keepitreal.keepitreal.repository.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -85,5 +86,13 @@ public class PostsService {
         }
     }
 
+    public Comment createComment(Long postsId, Comment commentObject){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post!=null){
+            return commentRepository.save(commentObject);
+        } else {
+            throw new InformationNotFoundException("no comment found.");
+        }
+    }
 
 }
