@@ -95,4 +95,14 @@ public class PostsService {
         }
     }
 
+    public String deleteComment(Long postsId, Long commentId){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post!=null){
+            commentRepository.deleteById(commentId);
+            return "comment has been deleted.";
+        } else{
+            throw new InformationNotFoundException("comment with ID "+commentId+" does not exist.");
+        }
+    }
+
 }

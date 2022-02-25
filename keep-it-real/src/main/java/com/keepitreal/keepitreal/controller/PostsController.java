@@ -50,4 +50,9 @@ public class PostsController {
         return postsService.createComment(postsId, commentObject);
     }
 
+    @DeleteMapping("/posts/{postsId}/comment/{commentId}/")
+    public String deleteComment(@PathVariable Long postsId, @PathVariable Long commentId){
+        return postsService.deleteComment(postsId, commentId);
+    }
+
 }
