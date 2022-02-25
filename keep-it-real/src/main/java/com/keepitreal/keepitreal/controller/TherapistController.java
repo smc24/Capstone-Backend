@@ -1,5 +1,6 @@
 package com.keepitreal.keepitreal.controller;
 
+import com.keepitreal.keepitreal.model.Comment;
 import com.keepitreal.keepitreal.model.Therapist;
 import com.keepitreal.keepitreal.service.TherapistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,6 @@ public class TherapistController {
     public String deleteTherapist(@PathVariable Long therapistId){
         return therapistService.deleteTherapist(therapistId);
     }
-
-
-
-
 
 
 }

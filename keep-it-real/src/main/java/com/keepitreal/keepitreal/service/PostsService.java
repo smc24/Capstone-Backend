@@ -2,12 +2,12 @@ package com.keepitreal.keepitreal.service;
 
 import com.keepitreal.keepitreal.exceptions.InformationExistsException;
 import com.keepitreal.keepitreal.exceptions.InformationNotFoundException;
+import com.keepitreal.keepitreal.model.Comment;
 import com.keepitreal.keepitreal.model.Posts;
-import com.keepitreal.keepitreal.model.Therapist;
+import com.keepitreal.keepitreal.repository.CommentRepository;
 import com.keepitreal.keepitreal.repository.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -16,6 +16,9 @@ public class PostsService {
 
     @Autowired
     private PostsRepository postsRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     //GETTING ALL POSTS
     public List<Posts> getAllPosts(){
@@ -71,6 +74,16 @@ public class PostsService {
         }
     }
 
+    /////////////////////COMMENTS//////////////////////////////////
+
+    public List<Comment> getAllComments(Long postsId){
+        Posts post = postsRepository.findById(postsId).get();
+        if(post!=null){
+            return commentRepository.findAll();
+        } else {
+            throw new InformationNotFoundException("no comments found.");
+        }
+    }
 
 
 }

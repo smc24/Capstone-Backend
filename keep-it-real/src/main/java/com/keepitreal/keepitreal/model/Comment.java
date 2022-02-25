@@ -29,10 +29,26 @@ public class Comment {
     @JsonIgnore
     private Therapist therapist;
 
+    public Therapist getTherapist() {
+        return therapist;
+    }
+
+    public void setTherapist(Therapist therapist) {
+        this.therapist = therapist;
+    }
+
     @ManyToOne
     @JoinColumn(name = "posts_id", referencedColumnName = "id")
     @JsonIgnore
     private Posts user;
+
+    public Posts getUser() {
+        return user;
+    }
+
+    public void setUser(Posts user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;

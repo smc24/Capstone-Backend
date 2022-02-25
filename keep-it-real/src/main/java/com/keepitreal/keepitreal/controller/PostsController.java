@@ -1,5 +1,6 @@
 package com.keepitreal.keepitreal.controller;
 
+import com.keepitreal.keepitreal.model.Comment;
 import com.keepitreal.keepitreal.model.Posts;
 import com.keepitreal.keepitreal.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class PostsController {
     @DeleteMapping("/posts/{postsId}/")
     public String deletePost(@PathVariable Long postsId){
         return postsService.deletePost(postsId);
+    }
+
+/////////////////////////////COMMENTS/////////////////////////////////////
+
+    @GetMapping("/posts/{postsId}/comment/")
+    public List<Comment> getAllComments(@PathVariable Long postsId){
+        return postsService.getAllComments(postsId);
     }
 
 

@@ -3,6 +3,7 @@ package com.keepitreal.keepitreal.service;
 import com.keepitreal.keepitreal.exceptions.InformationExistsException;
 import com.keepitreal.keepitreal.exceptions.InformationNotFoundException;
 import com.keepitreal.keepitreal.model.Therapist;
+import com.keepitreal.keepitreal.repository.PostsRepository;
 import com.keepitreal.keepitreal.repository.TherapistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class TherapistService {
 
     @Autowired
     private TherapistRepository therapistRepository;
+
 
     //GETTING THE LIST OF THERAPISTS
     public List<Therapist> getAllTherapists(){
@@ -71,6 +73,8 @@ public class TherapistService {
             throw new InformationNotFoundException("therapist with ID "+therapistId+" has been deleted.");
         }
     }
+
+
 
 
 
